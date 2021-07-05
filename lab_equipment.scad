@@ -37,3 +37,14 @@ module syringe(height,radius){
         };
     };
 };
+
+module stirrer(radius,width,depth,height){
+        color("darkgray"){
+        translate([-width/2,-depth/2,0]){
+            cube([width,depth,height*2/3]);
+        };
+        translate([0,depth/8,0]){
+            cylinder(height,radius,radius);
+        };
+    };
+};

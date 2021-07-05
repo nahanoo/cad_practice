@@ -1,30 +1,26 @@
-module stand(radius,inner_radius,pole_radius){
-    difference(){
-        union(){
-            difference(){
-                cylinder(20,radius,radius);
-                cylinder(20,inner_radius,inner_radius);
-            };
-        };
-        union(){    
-                for(x = [(inner_radius+radius)/2, -(inner_radius+radius)/2], y = 0) translate([x, y, 0]) cylinder(r=pole_radius, h=50);
-                    
-                for(x = 0, y = [(inner_radius+radius)/2, -(inner_radius+radius)/2]) translate([x, y, 0]) cylinder(r=pole_radius, h=50);
-                };
-            };
-            
-    union(){
+module stand(width,depth,pole_radius,extra_play,thickness){
+        pole_position = 93;
+        color("white"){
         difference(){
             union(){
-                for(x = [(inner_radius+radius)/2, -(inner_radius+radius)/2], y = 0) translate([x, y, 0]) cylinder(r=pole_radius+5, h=50);
-                    
-                for(x = 0, y = [(inner_radius+radius)/2, -(inner_radius+radius)/2]) translate([x, y, 0]) cylinder(r=pole_radius+5, h=50);
+                difference(){
+                    translate([-(width/2+extra_play+thickness),-(depth/2+thickness+extra_play),0]){
+                    cube([width+2*(extra_play+thickness),depth+2*(extra_play+thickness),20]);
                     };
-            union(){    
-                for(x = [(inner_radius+radius)/2, -(inner_radius+radius)/2], y = 0) translate([x, y, 0]) cylinder(r=pole_radius, h=50);
-                    
-                for(x = 0, y = [(inner_radius+radius)/2, -(inner_radius+radius)/2]) translate([x, y, 0]) cylinder(r=pole_radius, h=50);
+                    translate([-(width/2+extra_play),-(depth/2+extra_play),0]){
+                    cube([width+2*extra_play,depth+2*extra_play,20]);
+                    };
                 };
             };
+            for(x = [width/2+extra_play+thickness/2, -width/2-extra_play-thickness/2], y = [-       pole_position,pole_position]) translate([x, y, 10]) cylinder(r=pole_radius, h=50);
+            };
+
+            difference(){
+                
+                for(x = [width/2+extra_play+thickness/2, -width/2-extra_play-thickness/2], y =              [-pole_position,pole_position]) translate([x, y, 0]) cylinder(r=pole_radius+5, h=50);
+                
+                for(x = [width/2+extra_play+thickness/2, -width/2-extra_play-thickness/2], y =              [-pole_position,pole_position]) translate([x, y, 0]) cylinder(r=pole_radius, h=50); 
+                };
+                for(x = [width/2+extra_play+thickness/2, -width/2-extra_play-thickness/2], y =              [-pole_position,pole_position]) translate([x, y, 0]) cylinder(r=pole_radius, h=3*80);
         };
-}
+    };
