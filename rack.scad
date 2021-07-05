@@ -1,6 +1,6 @@
 module stand(width,depth,pole_radius,extra_play,thickness){
         pole_position = 93;
-        color("white"){
+        color("yellow"){
         difference(){
             union(){
                 difference(){
@@ -21,6 +21,6 @@ module stand(width,depth,pole_radius,extra_play,thickness){
                 
                 for(x = [width/2+extra_play+thickness/2, -width/2-extra_play-thickness/2], y =              [-pole_position,pole_position]) translate([x, y, 0]) cylinder(r=pole_radius, h=50); 
                 };
-                for(x = [width/2+extra_play+thickness/2, -width/2-extra_play-thickness/2], y =              [-pole_position,pole_position]) translate([x, y, 0]) cylinder(r=pole_radius, h=3*80);
+                
         };
     };

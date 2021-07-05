@@ -32,10 +32,5 @@ translate([0,0,0]){
 translate([0,0,3*80]){
     rotate([0,180,180]){
         stand(stirrer_width,stirrer_depth/3,pole_radius,extra_play,thickness);
-        translate([0,0,10]){
-            color("white"){
-                cube([stirrer_width+2*extra_play+2*thickness,falcon_radius+20,20],center=true);
-            };
         }
     };
-};
