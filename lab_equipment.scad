@@ -7,7 +7,16 @@ module falcon(height,radius){
                 cylinder(10,radius,0);
             };
             translate([0,0,height-20]){
-            cylinder(10,radius+2,radius+2);
+                cylinder(10,radius+2,radius+2);
+                translate([radius-5,0,-20]){
+                    cylinder(40,2,2);
+                }
+                translate([-radius+5,0,-20]){
+                    cylinder(40,2,2);
+                }
+                translate([0,0,-20]){
+                    cylinder(40,2,2);
+                }
             };
         };
     };
