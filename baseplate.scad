@@ -1,30 +1,33 @@
-$fn=50;
-w = 320;
-d = 200;
-thickness = 7;
-m = 1.5;
 module baseplate(){
-    w_reps = w/10.5;
-    w_distance = w/w_reps;
-    d_reps = 16;
-    d_distance = d/d_reps;
-    echo(w_distance);
-    echo(d_distance);
+    $fn=50;
+    w = 275;
+    d = 170;
+    thickness = 7;
+    m = 3;
+    w_reps = 8;
+    w_space = w/w_reps;
+    d_reps = 8;
+    d_space = d/d_reps;
+    w_distance = 20;
+    d_distance = 3;
 
-    cube([w,d,thickness]);
-    for (k = [1:w_reps-1]){
-        for (q = [1:d_reps-1]){
-        translate([w_distance*k,d_distance,0]){
-            cube(50);
-        }  
+        difference(){
+        cube([w,d,thickness]);
+        for (i = [1:w_reps]){
+            for (j = [1:d_reps]){
+                translate([w_space*i-(w_space/2),d_space*j-(d_space/2),0]){
+                cube([w_distance,d_distance,thickness*2],center=true);
+                }
+            }
+        }
     }
 }
-/*
+
 projection(cut = true){
-    translate([d,0,0]){
+    translate([170,0,0]){
         rotate([0,0,90]){
             baseplate();
         }
     }
 }
-*/
+

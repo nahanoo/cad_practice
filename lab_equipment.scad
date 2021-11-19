@@ -57,3 +57,35 @@ module stirrer(radius,width,depth,height){
         };
     };
 };
+
+module reactor(){
+    reactor_base = 53;
+    reactor_height = 115;
+    cube([reactor_base,reactor_base,reactor_height]);
+}
+
+module pump(){
+    width = 100;
+    depth = 150.5;
+    thickness = 5;
+    legs = 40;
+    for(x = [width/10, width/10*9], y = [depth/10, depth/10*9]) translate([x, y, 0]) cylinder(r=2.25, h=legs);
+    translate([0,0,legs]){
+        cube([width,depth,thickness]);
+        translate([0,0,thickness]){
+            for(x = [width/4, width/4*3], y = [depth/4, depth/4*3]) translate([x, y, 0]) cylinder(r=20, h=8);
+        }
+    }
+}
+
+module bottle_2l(){
+    height = 260;
+    diameter = 136/2;
+    cylinder(height/8*5,diameter,diameter);
+    translate([0,0,height/8*5]){
+        cylinder(height/8*2,diameter,diameter/4);
+    }
+    translate([0,0,height/8*7]){
+        cylinder(height/8,diameter/4,diameter/4);
+    }
+}
