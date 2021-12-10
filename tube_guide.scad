@@ -1,14 +1,14 @@
 w = 15;
-h = 3;
 nut = 10;
 nut_margin = 3;
 nut_h = 5;
 tube = 4.5;
-tube_margin = 3;
+h = tube;
+tube_margin = 5;
 
 
 module plate(){
-	cube([w,nut+nut_margin*2+tube+tube_margin,h]);
+	cube([w,nut+nut_margin+tube+tube_margin,h]);
 }
 
 module hex(){
@@ -22,8 +22,21 @@ module hex(){
 }
 
 module tube(){
-	translate([0,nut+nut_margin*2,h]){
-		cube([w,tube+tube_margin,h]);
+	$fn=50;
+	translate([0,nut+nut_margin,h]){
+		difference(){
+			cube([w,tube+tube_margin,h*1.2]);
+			translate([0,tube_margin,h/2]){
+				union(){
+					rotate([0,90,0]){
+						cylinder(w,tube/2,tube/2);
+					}
+					translate([0,-tube/4,tube/3]){
+						cube([w,tube/2,tube/2]);
+					}
+				}
+			}
+		}
 	}
 }
 
