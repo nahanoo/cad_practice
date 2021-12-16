@@ -2,7 +2,7 @@ w = 15;
 nut = 10;
 nut_margin = 2;
 nut_h = 7;
-tube = 4.5;
+tube = 5;
 h = tube;
 tube_margin = 5;
 
@@ -45,9 +45,11 @@ module screw_hole(){
 	cylinder(h,2,2);
 }
 
-difference(){
-	plate(); 
-	translate([w/2,nut_h/2+nut_margin,0]) screw_hole();
+module guide(){
+	difference(){
+		plate(); 
+		translate([w/2,nut_h/2+nut_margin,0]) screw_hole();
+	}
+	hex();
+	tube();
 }
-hex();
-tube();
