@@ -47,6 +47,7 @@ module leg(){
 		cylinder(3,2,2);
 	}
 }
+/*
 for (i = [0:4]){
 	translate([20*i,0,0]){
 		leg();
@@ -54,4 +55,4 @@ for (i = [0:4]){
 }
 translate([0,50,0]){
 	vial_holder();
-}
+}*/
