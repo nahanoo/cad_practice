@@ -12,23 +12,9 @@ module vial_holder(){
 		cylinder(h,vial_r,vial_r);
 	}
 	//Foot
-	difference(){
-		//Unites circular foot and rectangular foot
-		union(){
-			cylinder(3,vial_r+12,vial_r+12);
-			translate([0,0,1.5]){
-				cube([holes+14,14,3],center=true);
-			}
-		}
-		//Adding M3 screw holes
-		translate([holes/2,0,0]){
-			cylinder(3,m,m);
-		}
-		translate([-holes/2,0,0]){
-			cylinder(3,m,m);
-		}
-	}
+	cylinder(3,vial_r+12,vial_r+12);
 }
+vial_holder();
 module leg(){
 	r = 3.5;
 	h = 10;
@@ -47,12 +33,11 @@ module leg(){
 		cylinder(3,2,2);
 	}
 }
+vial_holder();
 /*
 for (i = [0:4]){
-	translate([20*i,0,0]){
-		leg();
+	translate([*i,0,0]){
+		vial_holder();
 	}
 }
-translate([0,50,0]){
-	vial_holder();
-}*/
+*/
