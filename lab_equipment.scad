@@ -89,3 +89,13 @@ module bottle_2l(){
         cylinder(height/8,diameter/4,diameter/4);
     }
 }
+
+module vial_ring(){
+    vial = 12.6;
+    margin = 2;
+    difference(){
+	  cylinder(4,vial+margin,vial+margin);
+	  cylinder(4,vial,vial);
+    }
+}
+vial_ring();
