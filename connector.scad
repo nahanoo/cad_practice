@@ -4,7 +4,7 @@ insert = 4/2;
 thread = 41/2;
 neck = 29/2;
 thickness = 3;
-margin = 0.4;
+margin = 0.6;
 use </home/eric/apps/threads.scad>
 
 
@@ -111,21 +111,75 @@ module lid_insert_4(){
 }
 
 module lid_insert_3(){
+    x1 = 3.89711;
+    y1 = -2.25;
+    x2 = -3.89711;
+    y2 = -2.25;
+    x3 = 0;
+    y3 = 4.5;
     d =27;
     r = d/2-3.9;
     shift = insert+1.4;
     ofset = 1;
     difference(){
 	  cylinder(2,r,r);
-	  translate([0,ofset,0]){
-		translate([-r/3,-r/3,0])cylinder(2,insert,insert);
-		translate([r/3,-r/3,0])cylinder(2,insert,insert);
-		translate([0,r/3,0])cylinder(2,insert,insert);
+	  translate([0,0,0]){
+		translate([x1,y1,0])cylinder(2,insert,insert);
+		translate([x2,y2,0])cylinder(2,insert,insert);
+		translate([x3,y3,0])cylinder(2,insert,insert);
 	  }
     }
-    translate([0,ofset,0]){
-	  translate([-r/3,-r/3,2])tube_insert();
-	  translate([r/3,-r/3,2])tube_insert();
-	  translate([0,r/3,2])tube_insert();
+    translate([0,0,0]){
+	  translate([x1,y1,2])tube_insert();
+	  translate([x2,y2,2])tube_insert();
+	  translate([x3,y3,2])tube_insert();
 	  }
     }
+
+module lid_insert_2(){
+    x1 = 3.89711;
+    y1 = 0;
+    x2 = -3.89711;
+    y2 = 0;
+    x3 = 0;
+    y3 = 4.5;
+    d =27;
+    r = d/2-3.9;
+    shift = insert+1.4;
+    ofset = 1;
+    difference(){
+	  cylinder(2,r,r);
+	  translate([0,0,0]){
+		translate([x1,y1,0])cylinder(2,insert,insert);
+		translate([x2,y2,0])cylinder(2,insert,insert);
+		//translate([x3,y3,0])cylinder(2,insert,insert);
+	  }
+    }
+    translate([0,0,0]){
+	  translate([x1,y1,2])tube_insert();
+	  translate([x2,y2,2])tube_insert();
+	  //translate([x3,y3,2])tube_insert();
+	  }
+    }
+    
+module lid_air(){
+    x1 = 3.89711;
+    y1 = -2.25;
+    x2 = -3.89711;
+    y2 = -2.25;
+    x3 = 0;
+    y3 = 4.5;
+    d =27;
+    r = d/2-3.9;
+    shift = insert+1.4;
+    difference(){
+	  cylinder(2,r,r);
+	  translate([0,0,0]){
+		cylinder(2,insert,insert);
+	  }
+    }
+    translate([0,0,0]){
+	  spike();
+	  }
+    }
+lid_insert_3();
